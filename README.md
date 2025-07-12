@@ -227,3 +227,66 @@ This project is licensed under the MIT License.
 ---
 
 **BNN - Bullshit News Network** - Where the unbelievable becomes believable! 🎭 
+
+## Production Deployment with PM2
+
+This project supports easy production deployment and management using [PM2](https://pm2.keymetrics.io/).
+
+### Prerequisites
+- Install PM2 globally:
+  ```bash
+  npm install -g pm2
+  ```
+- Install `serve` globally (for frontend static serving):
+  ```bash
+  npm install -g serve
+  ```
+
+### Build and Start Production Servers
+
+- **Build and start everything:**
+  ```bash
+  npm run prod:setup
+  ```
+  (Runs the frontend build and starts both backend and frontend with PM2)
+
+- **Start servers only (after build):**
+  ```bash
+  npm run prod:start
+  ```
+
+- **Stop all PM2 processes:**
+  ```bash
+  npm run prod:stop
+  ```
+
+- **Restart all PM2 processes:**
+  ```bash
+  npm run prod:restart
+  ```
+
+- **Delete all PM2 processes:**
+  ```bash
+  npm run prod:delete
+  ```
+
+- **View logs:**
+  ```bash
+  npm run prod:logs
+  ```
+
+- **Check status:**
+  ```bash
+  npm run prod:status
+  ```
+
+- **Monitor resources:**
+  ```bash
+  npm run prod:monit
+  ```
+
+### Access Your App
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:5001/api
+
+You can run these commands from your project root. This makes it easy to manage your production build locally or on your server! 
