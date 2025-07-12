@@ -72,9 +72,9 @@ const CategoryPage = () => {
   return (
     <>
       <Helmet>
-        <title>{`${categoryInfo.name} - BNN News`}</title>
-        <meta name="description" content={`Latest ${categoryInfo.name.toLowerCase()} news and stories from BNN - Bullshit News Network.`} />
-        <meta property="og:title" content={`${categoryInfo.name} - BNN News`} />
+        <title>{`${categoryInfo.name} - FNN News`}</title>
+        <meta name="description" content={`Latest ${categoryInfo.name.toLowerCase()} news and stories from FNN - Fake News Network.`} />
+        <meta property="og:title" content={`${categoryInfo.name} - FNN News`} />
         <meta property="og:description" content={`Latest ${categoryInfo.name.toLowerCase()} news and stories.`} />
       </Helmet>
 

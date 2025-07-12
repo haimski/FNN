@@ -83,7 +83,7 @@ const ArticlePage = () => {
   return (
     <>
       <Helmet>
-        <title>{`${currentArticle.title} - BNN News`}</title>
+        <title>{`${currentArticle.title} - FNN News`}</title>
         <meta name="description" content={currentArticle.excerpt} />
         <meta property="og:title" content={currentArticle.title} />
         <meta property="og:description" content={currentArticle.excerpt} />

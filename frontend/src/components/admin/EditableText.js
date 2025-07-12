@@ -59,7 +59,7 @@ const EditableText = ({
 
   if (!isAuthenticated) {
     return (
-      <Box component={component} variant={variant} sx={{ ...sx, color }}>
+      <Box component={component} variant={variant} sx={{ ...sx, color, pointerEvents: 'auto', cursor: 'default' }}>
         {value}
       </Box>
     );

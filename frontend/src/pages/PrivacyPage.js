@@ -17,10 +17,10 @@ const PrivacyPage = () => {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy - BNN | Bullshit News Network</title>
-        <meta name="description" content="BNN Privacy Policy - Learn how we collect, use, and protect your personal information." />
-        <meta property="og:title" content="Privacy Policy - BNN | Bullshit News Network" />
-        <meta property="og:description" content="BNN Privacy Policy - Learn how we collect, use, and protect your personal information." />
+        <title>Privacy Policy - FNN | Fake News Network</title>
+        <meta name="description" content="FNN Privacy Policy - Learn how we collect, use, and protect your personal information." />
+        <meta property="og:title" content="Privacy Policy - FNN | Fake News Network" />
+        <meta property="og:description" content="FNN Privacy Policy - Learn how we collect, use, and protect your personal information." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -67,7 +67,7 @@ const PrivacyPage = () => {
               mb: 4
             }}
           >
-            At BNN (Bullshit News Network), we are committed to protecting your privacy and ensuring 
+            At FNN (Fake News Network), we are committed to protecting your privacy and ensuring 
             the security of your personal information. This Privacy Policy explains how we collect, 
             use, disclose, and safeguard your information when you visit our website.
           </Typography>
@@ -448,7 +448,7 @@ const PrivacyPage = () => {
 
             <Box sx={{ pl: 3 }}>
               <Typography variant="body1" sx={{ fontSize: '1rem', lineHeight: 1.7, color: '#4a5568', mb: 1 }}>
-                Email: privacy@bnn-news.com
+                Email: privacy@fnn-news.com
               </Typography>
               <Typography variant="body1" sx={{ fontSize: '1rem', lineHeight: 1.7, color: '#4a5568', mb: 1 }}>
                 Phone: +1 (555) 123-4567

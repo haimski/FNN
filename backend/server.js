@@ -89,7 +89,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/bnn-news')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fnn-news')
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('MongoDB connection error:', err));
 
@@ -106,7 +106,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'BNN API is running' });
+  res.json({ status: 'OK', message: 'FNN API is running' });
 });
 
 // Error handling middleware
@@ -124,5 +124,5 @@ app.use('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`BNN Server running on port ${PORT}`);
+  console.log(`FNN Server running on port ${PORT}`);
 }); 

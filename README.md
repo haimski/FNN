@@ -60,7 +60,7 @@ A modern international news portal web application built with React, Redux, Node
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd bnn-news-portal
+   cd fnn-news-portal
    ```
 
 2. **Install dependencies**
@@ -82,7 +82,7 @@ A modern international news portal web application built with React, Redux, Node
    Create `.env` file in the backend directory:
    ```env
    PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/bnn-news
+   MONGODB_URI=mongodb://localhost:27017/fnn-news
    NODE_ENV=development
    FRONTEND_URL=http://localhost:3000
    ```
@@ -114,7 +114,7 @@ A modern international news portal web application built with React, Redux, Node
 ## 🏗️ Project Structure
 
 ```
-bnn-news-portal/
+fnn-news-portal/
 ├── backend/
 │   ├── models/
 │   │   └── Article.js

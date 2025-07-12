@@ -7,12 +7,12 @@ module.exports = {
       env: {
         NODE_ENV: 'development',
         PORT: 5001,
-        MONGODB_URI: 'mongodb://localhost:27017/bnn-news'
+        MONGODB_URI: 'mongodb://localhost:27017/fnn-news'
       },
       env_production: {
         NODE_ENV: 'production',
         PORT: 5001,
-        MONGODB_URI: 'mongodb://localhost:27017/bnn-news'
+        MONGODB_URI: 'mongodb://localhost:27017/fnn-news'
       },
       instances: 1,
       autorestart: true,

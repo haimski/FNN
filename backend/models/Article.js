@@ -38,7 +38,8 @@ const articleSchema = new mongoose.Schema({
   },
   author: {
     type: String,
-    default: 'BNN Staff'
+    required: true,
+    default: 'FNN Staff'
   },
   featured: {
     type: Boolean,

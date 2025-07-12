@@ -1,5 +1,5 @@
 {
-  "name": "bnn-backend",
+  "name": "fnn-backend",
   "version": "1.0.0",
   "description": "BNN Backend API",
   "main": "server.js",

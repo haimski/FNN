@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   Box,
   Dialog,
@@ -21,7 +22,8 @@ const EditableImage = ({
   onImageChange, 
   sx = {}, 
   height = 200,
-  width = '100%'
+  width = '100%',
+  articleSlug = null // Add articleSlug prop for navigation
 }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -108,21 +110,36 @@ const EditableImage = ({
               opacity: 1
             }
           } : {},
-          zIndex: 5, // Higher z-index to receive clicks
+          zIndex: isAuthenticated ? 5 : 1, // Lower z-index for anonymous users
           ...sx
         }}
-        onClick={handleImageClick}
+        onClick={isAuthenticated ? handleImageClick : undefined}
       >
-        <img
-          src={src}
-          alt={alt}
-          style={{
-            width: width,
-            height: height,
-            objectFit: 'cover',
-            borderRadius: '8px'
-          }}
-        />
+        {!isAuthenticated && articleSlug ? (
+          <Link to={`/article/${articleSlug}`} style={{ textDecoration: 'none' }}>
+            <img
+              src={src}
+              alt={alt}
+              style={{
+                width: width,
+                height: height,
+                objectFit: 'cover',
+                borderRadius: '8px'
+              }}
+            />
+          </Link>
+        ) : (
+          <img
+            src={src}
+            alt={alt}
+            style={{
+              width: width,
+              height: height,
+              objectFit: 'cover',
+              borderRadius: '8px'
+            }}
+          />
+        )}
         
         {isAuthenticated && (
           <Box

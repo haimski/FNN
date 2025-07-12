@@ -445,7 +445,7 @@ const AboutPage = () => {
                   color: '#4a5568'
                 }}
               >
-                Email: education@bnn-experiment.com
+                Email: education@fnn-experiment.com
               </Typography>
             </Paper>
           </Grid>

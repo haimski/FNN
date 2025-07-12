@@ -13,10 +13,12 @@ import { motion } from 'framer-motion';
 import EditableText from '../admin/EditableText';
 import EditableImage from '../admin/EditableImage';
 import api from '../../utils/api';
+import { useSelector } from 'react-redux';
 
 const NewsCard = ({ article, featured = false, compact = false }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
   const handleTitleChange = async (newTitle) => {
     try {
@@ -107,6 +109,7 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
           src={article.imageUrl}
           alt={article.imageAlt}
           onImageChange={handleImageChange}
+          articleSlug={article.slug}
           height={featured ? (isMobile ? 200 : 250) : (compact ? 140 : 180)}
           sx={{
             transition: 'transform 0.3s ease',
@@ -126,25 +129,8 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
             position: 'relative',
           }}
         >
-          {/* Clickable area for navigation (excluding edit areas) */}
-          <Box
-            component={Link}
-            to={`/article/${article.slug}`}
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              zIndex: 1,
-              textDecoration: 'none',
-              color: 'inherit',
-              pointerEvents: 'none', // This allows clicks to pass through to edit elements
-            }}
-          />
-
           {/* Category Badge */}
-          <Box sx={{ mb: 1.5 }}>
+          <Box sx={{ mb: 1.5, position: 'relative', zIndex: 2 }}>
             <Chip
               label={article.category.charAt(0).toUpperCase() + article.category.slice(1)}
               size="small"
@@ -175,7 +161,9 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
               color: '#1a1a1a',
               '&:hover': {
                 color: '#cc0000',
-              }
+              },
+              position: 'relative',
+              zIndex: 2
             }}
           />
 
@@ -194,7 +182,9 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
                 WebkitLineClamp: featured ? 3 : 2,
                 WebkitBoxOrient: 'vertical',
                 overflow: 'hidden',
-                flexGrow: 1
+                flexGrow: 1,
+                position: 'relative',
+                zIndex: 2
               }}
             />
           )}
@@ -207,7 +197,9 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
               alignItems: 'center',
               mt: 'auto',
               pt: 1,
-              borderTop: '1px solid #f0f0f0'
+              borderTop: '1px solid #f0f0f0',
+              position: 'relative',
+              zIndex: 2
             }}
           >
             <Typography
@@ -247,12 +239,32 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
                 fontSize: '0.75rem',
                 fontWeight: 600,
                 textTransform: 'uppercase',
-                letterSpacing: '0.5px'
+                letterSpacing: '0.5px',
+                zIndex: 2
               }}
             >
               Featured
             </Box>
           )}
+
+          {/* Clickable area for navigation - only for non-editable areas */}
+          <Box
+            component={Link}
+            to={`/article/${article.slug}`}
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: isAuthenticated ? 1 : 15, // Higher z-index for anonymous users
+              textDecoration: 'none',
+              color: 'inherit',
+              '&:hover': {
+                textDecoration: 'none',
+              }
+            }}
+          />
         </CardContent>
       </Card>
     </motion.div>

@@ -5,7 +5,7 @@ require('dotenv').config();
 async function seedAdmin() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/bnn-news');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fnn-news');
     console.log('Connected to MongoDB');
 
     // Check if admin user already exists

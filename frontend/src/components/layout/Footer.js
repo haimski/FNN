@@ -70,17 +70,8 @@ const Footer = () => {
           {/* Logo and Description */}
           <Grid item xs={12} md={4}>
             <Box sx={{ mb: 2 }}>
-              <Typography
-                variant="h4"
-                component="div"
-                sx={{
-                  fontWeight: 700,
-                  color: '#cc0000',
-                  fontFamily: 'Georgia, serif',
-                  mb: 1
-                }}
-              >
-                BNN
+              <Typography variant="h6" sx={{ fontWeight: 700, color: '#cc0000', mb: 1 }}>
+                FNN
               </Typography>
               <Typography
                 variant="body2"
@@ -164,14 +155,8 @@ const Footer = () => {
             gap: isMobile ? 2 : 0
           }}
         >
-          <Typography
-            variant="body2"
-            sx={{
-              color: '#999999',
-              fontSize: '0.75rem'
-            }}
-          >
-            © {new Date().getFullYear()} BNN - Bullshit News Network. All rights reserved.
+          <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
+            © {new Date().getFullYear()} FNN - Fake News Network. All rights reserved.
           </Typography>
           
           <Box sx={{ display: 'flex', gap: 3 }}>

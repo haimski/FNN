@@ -39,7 +39,7 @@ const SupportPage = () => {
   const faqData = [
     {
       question: "How do I report a technical issue?",
-      answer: "You can report technical issues through our contact form, by emailing support@bnn-news.com, or by calling our support line. Please provide as much detail as possible including your browser, device, and steps to reproduce the issue."
+      answer: "You can report technical issues through our contact form, by emailing support@fnn-news.com, or by calling our support line. Please provide as much detail as possible including your browser, device, and steps to reproduce the issue."
     },
     {
       question: "How can I subscribe to the newsletter?",
@@ -47,7 +47,7 @@ const SupportPage = () => {
     },
     {
       question: "How do I contact the editorial team?",
-      answer: "For editorial inquiries, feedback, or story suggestions, please use our contact form and select 'Editorial Feedback' as the category, or email us directly at editorial@bnn-news.com."
+      answer: "For editorial inquiries, feedback, or story suggestions, please use our contact form and select 'Editorial Feedback' as the category, or email us directly at editorial@fnn-news.com."
     },
     {
       question: "What are your business hours?",
@@ -55,17 +55,17 @@ const SupportPage = () => {
     },
     {
       question: "How can I advertise on your platform?",
-      answer: "For advertising inquiries, please contact our advertising team at ads@bnn-news.com or use our contact form and select 'Advertising' as the category. We offer various advertising options including banner ads, sponsored content, and newsletter sponsorships."
+      answer: "For advertising inquiries, please contact our advertising team at ads@fnn-news.com or use our contact form and select 'Advertising' as the category. We offer various advertising options including banner ads, sponsored content, and newsletter sponsorships."
     }
   ];
 
   return (
     <>
       <Helmet>
-        <title>Support - BNN | Bullshit News Network</title>
-        <meta name="description" content="Get support and help from BNN - Bullshit News Network. Contact our support team for assistance." />
-        <meta property="og:title" content="Support - BNN | Bullshit News Network" />
-        <meta property="og:description" content="Get support and help from BNN." />
+        <title>Support - FNN | Fake News Network</title>
+        <meta name="description" content="Get support and help from FNN - Fake News Network. Contact our support team for assistance." />
+        <meta property="og:title" content="Support - FNN | Fake News Network" />
+        <meta property="og:description" content="Get support and help from FNN." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -148,7 +148,7 @@ const SupportPage = () => {
                       Email Support
                     </Typography>
                     <Typography variant="body1" sx={{ fontWeight: 500, mb: 2 }}>
-                      support@bnn-news.com
+                      support@fnn-news.com
                     </Typography>
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                       Available 24/7

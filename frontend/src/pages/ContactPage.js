@@ -54,10 +54,10 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us - BNN | Bullshit News Network</title>
-        <meta name="description" content="Get in touch with BNN - Bullshit News Network. Contact us for inquiries, feedback, or support." />
-        <meta property="og:title" content="Contact Us - BNN | Bullshit News Network" />
-        <meta property="og:description" content="Contact BNN for inquiries, feedback, or support." />
+        <title>Contact Us - FNN | Fake News Network</title>
+        <meta name="description" content="Get in touch with FNN - Fake News Network. Contact us for inquiries, feedback, or support." />
+        <meta property="og:title" content="Contact Us - FNN | Fake News Network" />
+        <meta property="og:description" content="Contact FNN for inquiries, feedback, or support." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -227,7 +227,7 @@ const ContactPage = () => {
                       Email
                     </Typography>
                     <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                      contact@bnn-news.com
+                      contact@fnn-news.com
                     </Typography>
                   </Box>
                 </Box>

@@ -18,7 +18,7 @@ router.post('/subscribe', async (req, res) => {
 
     // For now, just return success
     res.json({ 
-      message: 'Successfully subscribed to BNN newsletter!',
+      message: 'Successfully subscribed to FNN newsletter!',
       email,
       name: name || 'Subscriber'
     });
