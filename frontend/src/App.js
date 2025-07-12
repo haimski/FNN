@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useDispatch } from 'react-redux';
 
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -13,8 +14,17 @@ import SupportPage from './pages/SupportPage';
 import PrivacyPage from './pages/PrivacyPage';
 import NotFoundPage from './pages/NotFoundPage';
 import NotificationContainer from './components/common/NotificationContainer';
+import LoginModal from './components/auth/LoginModal';
+import { checkAuthStatus } from './store/slices/authSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Check authentication status on app load
+    dispatch(checkAuthStatus());
+  }, [dispatch]);
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Helmet>
@@ -45,6 +55,7 @@ function App() {
 
       <Footer />
       <NotificationContainer />
+      <LoginModal />
     </div>
   );
 }

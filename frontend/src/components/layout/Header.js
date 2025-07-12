@@ -23,6 +23,7 @@ import {
 } from '@mui/icons-material';
 
 import { toggleMobileMenu, closeMobileMenu } from '../../store/slices/uiSlice';
+import { setLoginModalOpen, logoutAdmin } from '../../store/slices/authSlice';
 
 const Header = () => {
   const theme = useTheme();
@@ -31,6 +32,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const { mobileMenuOpen } = useSelector((state) => state.ui);
   const { categories } = useSelector((state) => state.categories);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
 
   const navigationItems = [
     { name: 'World News', path: '/category/world' },
@@ -47,6 +49,14 @@ const Header = () => {
 
   const handleMobileMenuClose = () => {
     dispatch(closeMobileMenu());
+  };
+
+  const handleLoginClick = () => {
+    dispatch(setLoginModalOpen(true));
+  };
+
+  const handleLogoutClick = () => {
+    dispatch(logoutAdmin());
   };
 
   const isActive = (path) => {
@@ -137,6 +147,24 @@ const Header = () => {
           >
             <SearchIcon />
           </IconButton>
+
+          {/* Admin Login/Logout Button */}
+          <Button
+            onClick={isAuthenticated ? handleLogoutClick : handleLoginClick}
+            variant={isAuthenticated ? "outlined" : "contained"}
+            sx={{
+              ml: 2,
+              backgroundColor: isAuthenticated ? 'transparent' : '#cc0000',
+              color: isAuthenticated ? '#cc0000' : '#ffffff',
+              borderColor: '#cc0000',
+              '&:hover': {
+                backgroundColor: isAuthenticated ? 'rgba(204, 0, 0, 0.1)' : '#a00000',
+                borderColor: '#a00000'
+              }
+            }}
+          >
+            {isAuthenticated ? `Logout (${user?.username})` : 'Login'}
+          </Button>
 
           {/* Mobile Menu Button */}
           {isMobile && (

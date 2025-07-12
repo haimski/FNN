@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Card, 
-  CardMedia, 
   CardContent, 
   Typography, 
   Box, 
@@ -11,10 +10,43 @@ import {
   useMediaQuery
 } from '@mui/material';
 import { motion } from 'framer-motion';
+import EditableText from '../admin/EditableText';
+import EditableImage from '../admin/EditableImage';
+import api from '../../utils/api';
 
 const NewsCard = ({ article, featured = false, compact = false }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleTitleChange = async (newTitle) => {
+    try {
+      await api.put(`/articles/${article._id}`, { title: newTitle });
+      // You might want to update the article in the Redux store here
+    } catch (error) {
+      console.error('Failed to update title:', error);
+      throw error;
+    }
+  };
+
+  const handleExcerptChange = async (newExcerpt) => {
+    try {
+      await api.put(`/articles/${article._id}`, { excerpt: newExcerpt });
+      // You might want to update the article in the Redux store here
+    } catch (error) {
+      console.error('Failed to update excerpt:', error);
+      throw error;
+    }
+  };
+
+  const handleImageChange = async (newImageUrl) => {
+    try {
+      await api.put(`/articles/${article._id}`, { imageUrl: newImageUrl });
+      // You might want to update the article in the Redux store here
+    } catch (error) {
+      console.error('Failed to update image:', error);
+      throw error;
+    }
+  };
 
   const getCategoryColor = (category) => {
     const colors = {
@@ -57,8 +89,6 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
       whileHover={{ y: -4 }}
     >
       <Card
-        component={Link}
-        to={`/article/${article.slug}`}
         sx={{
           height: '100%',
           display: 'flex',
@@ -73,13 +103,12 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
         }}
       >
         {/* Image */}
-        <CardMedia
-          component="img"
-          height={featured ? (isMobile ? 200 : 250) : (compact ? 140 : 180)}
-          image={article.imageUrl}
+        <EditableImage
+          src={article.imageUrl}
           alt={article.imageAlt}
+          onImageChange={handleImageChange}
+          height={featured ? (isMobile ? 200 : 250) : (compact ? 140 : 180)}
           sx={{
-            objectFit: 'cover',
             transition: 'transform 0.3s ease',
             '&:hover': {
               transform: 'scale(1.05)',
@@ -94,8 +123,26 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
             display: 'flex',
             flexDirection: 'column',
             p: compact ? 2 : 3,
+            position: 'relative',
           }}
         >
+          {/* Clickable area for navigation (excluding edit areas) */}
+          <Box
+            component={Link}
+            to={`/article/${article.slug}`}
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 1,
+              textDecoration: 'none',
+              color: 'inherit',
+              pointerEvents: 'none', // This allows clicks to pass through to edit elements
+            }}
+          />
+
           {/* Category Badge */}
           <Box sx={{ mb: 1.5 }}>
             <Chip
@@ -111,9 +158,12 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
           </Box>
 
           {/* Title */}
-          <Typography
+          <EditableText
+            value={article.title}
+            onTextChange={handleTitleChange}
             variant={featured ? (isMobile ? 'h6' : 'h5') : (compact ? 'subtitle1' : 'h6')}
             component="h3"
+            multiline={featured ? 3 : 2}
             sx={{
               fontWeight: 600,
               lineHeight: 1.3,
@@ -127,15 +177,16 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
                 color: '#cc0000',
               }
             }}
-          >
-            {article.title}
-          </Typography>
+          />
 
           {/* Excerpt */}
           {!compact && (
-            <Typography
+            <EditableText
+              value={article.excerpt}
+              onTextChange={handleExcerptChange}
               variant="body2"
               color="text.secondary"
+              multiline={featured ? 3 : 2}
               sx={{
                 mb: 2,
                 lineHeight: 1.5,
@@ -145,9 +196,7 @@ const NewsCard = ({ article, featured = false, compact = false }) => {
                 overflow: 'hidden',
                 flexGrow: 1
               }}
-            >
-              {article.excerpt}
-            </Typography>
+            />
           )}
 
           {/* Meta Information */}
