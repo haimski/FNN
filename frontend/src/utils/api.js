@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// Temporary placeholder - replace with your actual backend URL
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://jsonplaceholder.typicode.com';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://fnn-rho.vercel.app/api';
 
 // Create axios instance with default configuration
 const api = axios.create({

@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
-const Article = require('../backend/models/Article');
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fnn-news', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// Import local models
+let Article;
+try {
+  Article = require('../models/Article');
+} catch (error) {
+  console.log('Article model not available, using mock data');
+}
 
 module.exports = async (req, res) => {
   try {
     // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL || 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
@@ -22,13 +23,39 @@ module.exports = async (req, res) => {
       return res.status(405).json({ success: false, message: 'Method not allowed' });
     }
 
-    // Get carousel articles (featured articles for carousel)
+    // Check if MongoDB is connected
+    if (!mongoose.connection.readyState) {
+      console.log('Connecting to MongoDB...');
+      await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fnn-news', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+    }
+
+    if (!Article) {
+      // Return mock data if Article model is not available
+      return res.json({
+        carousel: [],
+        featured: [],
+        topicSections: {
+          world: [],
+          economy: [],
+          sports: [],
+          travel: [],
+          culture: [],
+          gossip: []
+        },
+        categories: ['world', 'economy', 'sports', 'travel', 'culture', 'gossip']
+      });
+    }
+
+    // Get carousel articles
     const carousel = await Article.find({ 
       isCarousel: true, 
       isActive: true 
     }).sort({ createdAt: -1 }).limit(6);
 
-    // Get featured articles (non-carousel featured)
+    // Get featured articles
     const featured = await Article.find({ 
       isFeatured: true, 
       isCarousel: false, 
@@ -57,7 +84,8 @@ module.exports = async (req, res) => {
     console.error('Homepage API Error:', error);
     res.status(500).json({
       success: false,
-      message: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+      message: 'Internal server error',
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Unknown error'
     });
   }
 }; 
