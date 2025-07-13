@@ -5,8 +5,7 @@ import {
   Container, 
   Grid, 
   Box,
-  Typography,
-  useTheme
+  Typography
 } from '@mui/material';
 
 import CarouselSlider from '../components/news/CarouselSlider';
@@ -17,7 +16,6 @@ import LoadingSpinner from '../components/common/LoadingSpinner';
 import { fetchHomepageData } from '../store/slices/articlesSlice';
 
 const HomePage = () => {
-  const theme = useTheme();
   const dispatch = useDispatch();
   
   const { 

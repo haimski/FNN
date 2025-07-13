@@ -1,17 +1,19 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { 
-  Container, 
-  Typography, 
-  Box, 
+import {
+  Container,
+  Typography,
+  Box,
   Paper,
-  Divider,
-  useTheme,
-  useMediaQuery
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+  Divider
 } from '@mui/material';
+import { Security, PrivacyTip, Shield } from '@mui/icons-material';
 
 const PrivacyPage = () => {
-  const theme = useTheme();
 
   return (
     <>
@@ -160,6 +162,33 @@ const PrivacyPage = () => {
               </Typography>
             </Box>
           </Box>
+
+          <List sx={{ mt: 4 }}>
+            <ListItem>
+              <ListItemIcon>
+                <Security />
+              </ListItemIcon>
+              <ListItemText primary="Data Security" />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <PrivacyTip />
+              </ListItemIcon>
+              <ListItemText primary="Your Rights" />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <Shield />
+              </ListItemIcon>
+              <ListItemText primary="Information Sharing" />
+            </ListItem>
+            <ListItem>
+              <ListItemIcon>
+                <PrivacyTip />
+              </ListItemIcon>
+              <ListItemText primary="Cookies and Tracking" />
+            </ListItem>
+          </List>
 
           <Divider sx={{ my: 4 }} />
 

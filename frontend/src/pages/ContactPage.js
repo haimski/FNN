@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { 
-  Container, 
-  Typography, 
-  Box, 
+import {
+  Container,
+  Typography,
+  Box,
   Grid,
   Paper,
   TextField,
@@ -12,14 +12,11 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Alert,
-  useTheme,
-  useMediaQuery
+  Alert
 } from '@mui/material';
 import { Send, Email, Phone, LocationOn } from '@mui/icons-material';
 
 const ContactPage = () => {
-  const theme = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',

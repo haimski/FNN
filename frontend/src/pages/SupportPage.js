@@ -1,31 +1,26 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { 
-  Container, 
-  Typography, 
-  Box, 
-  Grid,
+import {
+  Container,
+  Typography,
+  Box,
   Paper,
-  Button,
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Grid,
+  Card,
+  CardContent,
+  Button,
+  TextField,
+  Alert,
+  Chip,
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  Chip,
-  useTheme
+  ListItemText
 } from '@mui/material';
-import { 
-  ExpandMore, 
-  Phone, 
-  Email, 
-  Chat, 
-  Support, 
-  Info,
-  Link as LinkIcon
-} from '@mui/icons-material';
+import { ExpandMore, Help, Email, Phone, Chat, Info, Link as LinkIcon } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 const SupportPage = () => {
@@ -127,10 +122,10 @@ const SupportPage = () => {
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                       Available during business hours
                     </Typography>
-                    <Chip 
-                      label="Live Support" 
-                      color="success" 
-                      size="small" 
+                    <Chip
+                      label="Live Support"
+                      color="success"
+                      size="small"
                       sx={{ mb: 2 }}
                     />
                     <Typography variant="body2" color="text.secondary">
@@ -152,10 +147,10 @@ const SupportPage = () => {
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                       Available 24/7
                     </Typography>
-                    <Chip 
-                      label="24/7 Support" 
-                      color="primary" 
-                      size="small" 
+                    <Chip
+                      label="24/7 Support"
+                      color="primary"
+                      size="small"
                       sx={{ mb: 2 }}
                     />
                     <Typography variant="body2" color="text.secondary">
@@ -177,10 +172,10 @@ const SupportPage = () => {
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                       Business hours only
                     </Typography>
-                    <Chip 
-                      label="Instant Help" 
-                      color="warning" 
-                      size="small" 
+                    <Chip
+                      label="Instant Help"
+                      color="warning"
+                      size="small"
                       sx={{ mb: 2 }}
                     />
                     <Button
@@ -201,7 +196,7 @@ const SupportPage = () => {
                 {/* Contact Form */}
                 <Grid item xs={12} md={6}>
                   <Paper elevation={1} sx={{ p: 3, textAlign: 'center', height: '100%' }}>
-                    <Support sx={{ fontSize: 48, color: '#cc0000', mb: 2 }} />
+                    <Help sx={{ fontSize: 48, color: '#cc0000', mb: 2 }} />
                     <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
                       Contact Form
                     </Typography>
@@ -211,10 +206,10 @@ const SupportPage = () => {
                     <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                       For complex issues
                     </Typography>
-                    <Chip 
-                      label="Detailed Support" 
-                      color="info" 
-                      size="small" 
+                    <Chip
+                      label="Detailed Support"
+                      color="info"
+                      size="small"
                       sx={{ mb: 2 }}
                     />
                     <Button
@@ -224,7 +219,7 @@ const SupportPage = () => {
                       sx={{
                         borderColor: '#cc0000',
                         color: '#cc0000',
-                        '&:hover': { 
+                        '&:hover': {
                           borderColor: '#a00000',
                           backgroundColor: 'rgba(204, 0, 0, 0.1)'
                         },
@@ -334,7 +329,7 @@ const SupportPage = () => {
               >
                 Response Times
               </Typography>
-              
+
               <Box sx={{ mb: 2 }}>
                 <Typography variant="body2" color="text.secondary">
                   Phone Support
@@ -343,7 +338,7 @@ const SupportPage = () => {
                   Immediate
                 </Typography>
               </Box>
-              
+
               <Box sx={{ mb: 2 }}>
                 <Typography variant="body2" color="text.secondary">
                   Online Chat
@@ -352,7 +347,7 @@ const SupportPage = () => {
                   &lt; 5 minutes
                 </Typography>
               </Box>
-              
+
               <Box sx={{ mb: 2 }}>
                 <Typography variant="body2" color="text.secondary">
                   Email Support
@@ -361,7 +356,7 @@ const SupportPage = () => {
                   24-48 hours
                 </Typography>
               </Box>
-              
+
               <Box>
                 <Typography variant="body2" color="text.secondary">
                   Contact Form
@@ -384,7 +379,7 @@ const SupportPage = () => {
               >
                 Quick Links
               </Typography>
-              
+
               <List>
                 <ListItem component={Link} to="/contact" sx={{ textDecoration: 'none', color: 'inherit' }}>
                   <ListItemIcon>
