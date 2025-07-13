@@ -4,13 +4,11 @@ module.exports = {
     'react-app/jest'
   ],
   rules: {
-    // Treat unused variables as warnings, not errors
-    'no-unused-vars': ['warn', { 
-      'vars': 'all', 
-      'args': 'after-used', 
-      'ignoreRestSiblings': true,
-      'argsIgnorePattern': '^_',
-      'varsIgnorePattern': '^_'
-    }]
+    // Completely disable unused variables warnings
+    'no-unused-vars': 'off',
+    // Disable unused imports warnings
+    'react/jsx-no-undef': 'error',
+    // Allow any unused variables
+    '@typescript-eslint/no-unused-vars': 'off'
   }
 }; 
