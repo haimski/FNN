@@ -6,8 +6,7 @@ import {
   Grid, 
   Box,
   Typography,
-  useTheme,
-  useMediaQuery
+  useTheme
 } from '@mui/material';
 
 import CarouselSlider from '../components/news/CarouselSlider';
@@ -19,14 +18,12 @@ import { fetchHomepageData } from '../store/slices/articlesSlice';
 
 const HomePage = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const dispatch = useDispatch();
   
   const { 
     carouselArticles, 
     featuredArticles, 
     topicSections,
-    homepageCategories,
     loading, 
     error 
   } = useSelector((state) => state.articles);

@@ -20,7 +20,6 @@ import { Send, Email, Phone, LocationOn } from '@mui/icons-material';
 
 const ContactPage = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [formData, setFormData] = useState({
     name: '',
     email: '',

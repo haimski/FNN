@@ -29,7 +29,6 @@ import {
 import { Link } from 'react-router-dom';
 
 const SupportPage = () => {
-  const theme = useTheme();
   const [expanded, setExpanded] = useState(false);
 
   const handleAccordionChange = (panel) => (event, isExpanded) => {
