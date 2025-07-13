@@ -1,20 +1,26 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { 
-  Container, 
-  Typography, 
-  Box, 
-  Grid,
+import {
+  Container,
+  Typography,
+  Box,
   Paper,
-  Divider,
-  useTheme,
-  useMediaQuery
+  Grid,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon
 } from '@mui/material';
+import { 
+  Newspaper, 
+  TrendingUp, 
+  People, 
+  Security,
+  EmojiEvents,
+  Psychology
+} from '@mui/icons-material';
 
 const AboutPage = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
   return (
     <>
       <Helmet>

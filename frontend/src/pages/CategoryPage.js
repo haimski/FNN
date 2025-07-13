@@ -25,7 +25,6 @@ import { fetchArticlesByCategory } from '../store/slices/articlesSlice';
 const CategoryPage = () => {
   const { category } = useParams();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
 

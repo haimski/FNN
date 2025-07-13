@@ -1,31 +1,35 @@
-import React, { useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet-async';
-import { 
-  Container, 
-  Grid, 
-  Box, 
-  Typography, 
+import {
+  Container,
+  Typography,
+  Box,
+  Paper,
+  Grid,
   Chip,
+  Button,
   Breadcrumbs,
-  Link as MuiLink,
-  Divider,
-  Avatar,
-  useTheme,
-  useMediaQuery
+  Link,
+  Divider
 } from '@mui/material';
-import { Home, NavigateNext, AccessTime, Person } from '@mui/icons-material';
+import { 
+  ArrowBack, 
+  Share, 
+  BookmarkBorder, 
+  NavigateNext,
+  Home,
+  Person,
+  AccessTime
+} from '@mui/icons-material';
 
-import Sidebar from '../components/layout/Sidebar';
 import LoadingSpinner from '../components/common/LoadingSpinner';
-
+import Sidebar from '../components/layout/Sidebar';
 import { fetchArticleBySlug, clearCurrentArticle } from '../store/slices/articlesSlice';
 
 const ArticlePage = () => {
   const { slug } = useParams();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const dispatch = useDispatch();
 
   const { currentArticle, loading, error } = useSelector((state) => state.articles);
@@ -96,21 +100,26 @@ const ArticlePage = () => {
 
       <Container maxWidth="xl" sx={{ py: 4 }}>
         {/* Breadcrumbs */}
-        <Breadcrumbs 
+        <Breadcrumbs
           separator={<NavigateNext fontSize="small" />}
           sx={{ mb: 3 }}
         >
-          <MuiLink component={Link} to="/" color="inherit" sx={{ display: 'flex', alignItems: 'center' }}>
+          <Link
+            component={Link}
+            to="/"
+            color="inherit"
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
             <Home sx={{ mr: 0.5 }} fontSize="small" />
             Home
-          </MuiLink>
-          <MuiLink 
-            component={Link} 
-            to={`/category/${currentArticle.category}`} 
+          </Link>
+          <Link
+            component={Link}
+            to={`/category/${currentArticle.category}`}
             color="inherit"
           >
             {categoryInfo.name}
-          </MuiLink>
+          </Link>
           <Typography color="text.primary" sx={{ maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {currentArticle.title}
           </Typography>
