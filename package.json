@@ -20,7 +20,10 @@
     "prod:status": "pm2 status",
     "prod:monit": "pm2 monit",
     "prod:setup": "npm run prod:build && npm run prod:start",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "builder": "cd frontend && npm install && npm run build",
+    "starter": "cd backend && npm install && NODE_ENV=production node server.js",
+  "prod": "npm run builder && npm run starter"
   },
   "keywords": [
     "news",

@@ -1,0 +1,15 @@
+{
+  "short_name": "FNN",
+  "name": "FNN - Fake News Network",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#b91c1c",
+  "background_color": "#ffffff"
+} 

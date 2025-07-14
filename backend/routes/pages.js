@@ -7,13 +7,13 @@ router.get('/home', async (req, res) => {
   try {
     // Fetch carousel articles
     const carousel = await Article.find({ carousel: true, published: true })
-      .sort('-publishedAt')
-      .limit(3)
+      .sort('-createdAt')
+      .limit(6)
       .select('-content');
 
-    // Fetch featured articles
+    // Fetch featured articles (excluding carousel articles)
     const featured = await Article.find({ featured: true, published: true })
-      .sort('-publishedAt')
+      .sort('-createdAt')
       .limit(6)
       .select('-content');
 
@@ -24,7 +24,7 @@ router.get('/home', async (req, res) => {
     await Promise.all(
       categories.map(async (category) => {
         const articles = await Article.find({ category, published: true })
-          .sort('-publishedAt')
+          .sort('-createdAt')
           .limit(topicLimit)
           .select('-content');
         topicSections[category] = articles;
@@ -38,6 +38,7 @@ router.get('/home', async (req, res) => {
       categories
     });
   } catch (err) {
+    console.error('Homepage API Error:', err);
     res.status(500).json({ error: 'Failed to load homepage data' });
   }
 });

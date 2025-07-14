@@ -21,8 +21,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Check authentication status on app load
-    dispatch(checkAuthStatus());
+    // Check authentication status on app load only if token exists
+    const token = localStorage.getItem('jwt_token');
+    if (token) {
+      dispatch(checkAuthStatus());
+    }
   }, [dispatch]);
 
   return (
